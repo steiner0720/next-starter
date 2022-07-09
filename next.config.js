@@ -1,12 +1,10 @@
+const { i18n } = require('./next-i18next.config')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    swcMinify: true,
-    i18n: {
-        locales: ["en-US", "zh-Hant"],
-        defaultLocale: "en-US",
-        localeDetection: false,
-    },
-};
+  reactStrictMode: true,
+  swcMinify: true,
+  i18n,
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
