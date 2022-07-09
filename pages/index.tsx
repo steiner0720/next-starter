@@ -4,9 +4,9 @@ import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import useSwr, { mutate } from 'swr'
 import { Button } from '@mui/material'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 
-const { container, footer, description, code } = styles
+const { container, description, code } = styles
 
 const Home: NextPage = () => {
   const { t } = useTranslation('common')
