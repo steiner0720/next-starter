@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import useSwr, { mutate } from 'swr'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
@@ -9,8 +10,11 @@ import styles from '../styles/Home.module.css'
 const Home: NextPage = () => {
   const { t } = useTranslation('common')
   const { locale, route, asPath, push } = useRouter()
+  const { data } = useSwr('home')
 
   const switchLang = locale === 'en-US' ? 'zh-Hant' : 'en-US'
+
+  const handleChange = (count: number) => mutate('home', { ...data, count }, false)
   return (
     <div className={styles.container}>
       <Head>
@@ -32,7 +36,15 @@ const Home: NextPage = () => {
           Current Language: <code className={styles.code}>{t(locale || '')}</code>
         </p>
         <button onClick={() => push(route, asPath, { locale: switchLang })}>Change Language to {t(switchLang || '')}</button>
-
+        <div>
+          <span style={{ marginRight: '12px' }}>{data.count} (from gloabal state)</span>
+          <button onClick={() => handleChange(data.count + 1)} style={{ marginRight: '12px' }}>
+            Increase
+          </button>
+          <button onClick={() => handleChange(data.count - 1)} style={{ marginRight: '12px' }}>
+            decrease
+          </button>
+        </div>
         <div className={styles.grid}>
           <a href='https://nextjs.org/docs' className={styles.card}>
             <h2>Documentation &rarr;</h2>
