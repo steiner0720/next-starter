@@ -1,0 +1,8 @@
+{
+  "primary": {
+    "light": "#40a9ff",
+    "main": "#1890ff",
+    "dark": "#096dd9",
+    "contrastText": "#fff"
+  }
+}
