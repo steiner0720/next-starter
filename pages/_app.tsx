@@ -1,13 +1,13 @@
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
-import { appWithTranslation } from 'next-i18next'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { SWRConfig } from 'swr'
-import fallback from '../store/fallback'
-import themeOptions from '../lib/theme/themeOptions'
-import '../styles/globals.css'
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { appWithTranslation } from 'next-i18next';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { SWRConfig } from 'swr';
+import fallback from '../store/fallback';
+import themeOptions from '../lib/theme/themeOptions';
+import '../styles/globals.css';
 
-const theme = createTheme(themeOptions)
+const theme = createTheme(themeOptions);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </ThemeProvider>
     </SWRConfig>
-  )
+  );
 }
 
-export default appWithTranslation(MyApp)
+export default appWithTranslation(MyApp);

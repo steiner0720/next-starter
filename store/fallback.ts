@@ -1,17 +1,17 @@
 type user = {
-  name: string
-}
+  name: string;
+};
 
 type app = {
-  user?: user
-}
+  user?: user;
+};
 
 type home = {
-  count?: number
-}
+  count?: number;
+};
 
-export const app: app = { user: undefined }
+export const app: app = { user: undefined };
 
-export const home = { count: 0 }
+export const home = { count: 0 };
 
-export default { app, home }
+export default { app, home };

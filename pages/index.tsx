@@ -1,21 +1,21 @@
-import type { NextPage } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
-import useSwr, { mutate } from 'swr'
-import { Button } from '@mui/material'
-import styles from '../styles/Home.module.scss'
+import type { NextPage } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
+import useSwr, { mutate } from 'swr';
+import { Button } from '@mui/material';
+import styles from '../styles/Home.module.scss';
 
-const { container, description, code } = styles
+const { container, description, code } = styles;
 
 const Home: NextPage = () => {
-  const { t } = useTranslation('common')
-  const { locale, route, asPath, push } = useRouter()
-  const { data } = useSwr('home')
+  const { t } = useTranslation('common');
+  const { locale, route, asPath, push } = useRouter();
+  const { data } = useSwr('home');
 
-  const switchLang = locale === 'en-US' ? 'zh-Hant' : 'en-US'
+  const switchLang = locale === 'en-US' ? 'zh-Hant' : 'en-US';
 
-  const handleChange = (count: number) => mutate('home', { ...data, count }, false)
+  const handleChange = (count: number) => mutate('home', { ...data, count }, false);
   return (
     <div className={container}>
       <p className={description}>
@@ -34,15 +34,15 @@ const Home: NextPage = () => {
         </Button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export async function getServerSideProps({ locale }: any) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
     },
-  }
+  };
 }
 
-export default Home
+export default Home;
